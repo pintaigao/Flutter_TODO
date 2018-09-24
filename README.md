@@ -1,6 +1,6 @@
 # Todo List Client with Flutter
 
-A Todo List Mobile Client
+A Todo List Mobile Client Design
 
 ### Screenshot
 <img src = "/resource/TODO_ScreenShot.png" height = 500/>
