@@ -3,7 +3,7 @@
 A Todo List Mobile Client
 
 ### Screenshot
-<img src = "/resources/TODO_Screenshot.png" height = 500/>
+<img src = "/resources/TODO_ScreenShot.png" height = 500/>
 
 ## Getting Started
 
