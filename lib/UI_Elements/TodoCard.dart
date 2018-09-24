@@ -1,35 +1,43 @@
 import 'package:flutter/material.dart';
 
 class TodoCard extends StatelessWidget {
-
-  final int gk;
+  final int position;
   final ScrollController controller;
 
-  TodoCard({this.gk,this.controller});
+  TodoCard({this.position, this.controller});
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
     return Container(
-        margin: EdgeInsets.only(left: 10.0,bottom: 50.0,right: 10.0),
+        margin: EdgeInsets.only(left: 10.0, bottom: 50.0, right: 10.0),
         width: screenSize.width - 110.0,
         height: screenSize.height / 2.1,
         child: new Container(
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Padding(padding: EdgeInsets.symmetric(vertical: 9.0),child: new Text("Date",style: new TextStyle(color: Colors.white),),),
+              new Padding(
+                padding: EdgeInsets.symmetric(vertical: 9.0),
+                child: new Text(
+                  "Date",
+                  style: new TextStyle(color: Colors.white),
+                ),
+              ),
               new Expanded(
                 child: new Container(
-                  padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                        boxShadow: <BoxShadow>[
-                          new BoxShadow(color: Colors.black38,offset: Offset(0.0, 15.0),blurRadius: 8.0)
-                        ],
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey, width: 0.5),
+                      boxShadow: <BoxShadow>[
+                        new BoxShadow(
+                            color: Colors.black38,
+                            offset: Offset(0.0, 15.0),
+                            blurRadius: 8.0)
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey, width: 0.5),
                     ),
                     child: new Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,8 +87,10 @@ class TodoCard extends StatelessWidget {
                           height: 120.0,
                           decoration: BoxDecoration(color: Colors.grey),
                           child: new InkWell(
-                            onTap: () => controller.animateTo((screenSize.width - 110.0)*gk, duration: const Duration(milliseconds: 300), curve: Curves.easeOut)
-                          ),
+                              onDoubleTap: () => controller.animateTo(
+                                  (screenSize.width - 90.5) * position,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeOut)),
                         )
                       ],
                     )),
@@ -89,5 +99,4 @@ class TodoCard extends StatelessWidget {
           ),
         ));
   }
-
 }

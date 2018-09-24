@@ -82,23 +82,17 @@ class _HomePageState extends State<HomePage> {
                   height: 100.0,
                 ),
                 new Expanded(
-                  child: SingleChildScrollView(
-                      controller: _scrollController,
-                      physics: const NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.only(left: 29.0),
-                      child: Row(
-                        children: <Widget>[
-                          new TodoCard(gk: 0, controller: _scrollController),
-                          new TodoCard(gk: 1, controller: _scrollController),
-                          new TodoCard(gk: 2, controller: _scrollController),
-                          new TodoCard(gk: 3, controller: _scrollController),
-                          new TodoCard(gk: 4, controller: _scrollController),
-                          new TodoCard(gk: 5, controller: _scrollController),
-                          new TodoCard(gk: 6, controller: _scrollController),
-                          new TodoCard(gk: 7, controller: _scrollController),
-                        ],
-                      )),
+                  child: ListView.builder(
+                    itemBuilder: (BuildContext context, int index) {
+                      return TodoCard(
+                          position: index, controller: _scrollController);
+                    },
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 29.0),
+                    itemCount: 20,
+                    controller: _scrollController,
+//                      physics: const NeverScrollableScrollPhysics(),
+                  ),
                 ),
               ],
             ),
@@ -110,11 +104,5 @@ class _HomePageState extends State<HomePage> {
 }
 
 /*child: ListView.builder(
-                      itemBuilder:(BuildContext context,int index){
-                        return TodoCard(position:index);
-                      },
-                    controller: _scrollController,
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.only(left: 29.0),
-                    itemCount: 20,
+
                   ),*/
