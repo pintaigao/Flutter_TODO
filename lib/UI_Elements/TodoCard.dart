@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TodoCard extends StatelessWidget {
+
+  final int gk;
+  final ScrollController controller;
+
+  TodoCard({this.gk,this.controller});
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -8,7 +14,7 @@ class TodoCard extends StatelessWidget {
     return Container(
         margin: EdgeInsets.only(left: 10.0,bottom: 50.0,right: 10.0),
         width: screenSize.width - 110.0,
-        height: screenSize.height / 3,
+        height: screenSize.height / 2.1,
         child: new Container(
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +79,7 @@ class TodoCard extends StatelessWidget {
                           height: 120.0,
                           decoration: BoxDecoration(color: Colors.grey),
                           child: new InkWell(
-//                            onTap: ,
+                            onTap: () => controller.animateTo((screenSize.width - 110.0)*gk, duration: const Duration(milliseconds: 300), curve: Curves.easeOut)
                           ),
                         )
                       ],
@@ -83,4 +89,5 @@ class TodoCard extends StatelessWidget {
           ),
         ));
   }
+
 }

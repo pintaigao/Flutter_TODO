@@ -9,13 +9,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ScrollController c;
-
+  ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    c = new PageController();
+    _scrollController = new PageController();
   }
 
   Widget _buildWelcomeInfo(BuildContext context) {
@@ -55,6 +54,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _scrollToNext(int index) {
+    _scrollController.animateTo(200.0 * 5,
+        duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -78,18 +82,24 @@ class _HomePageState extends State<HomePage> {
                   height: 100.0,
                 ),
                 new Expanded(
-                    child: new ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    new TodoCard(),
-                    new TodoCard(),
-                    new TodoCard(),
-                    new TodoCard(),
-                    new TodoCard(),
-                    new TodoCard(),
-                    new TodoCard(),
-                  ],
-                )),
+                  child: SingleChildScrollView(
+                      controller: _scrollController,
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.only(left: 29.0),
+                      child: Row(
+                        children: <Widget>[
+                          new TodoCard(gk: 0, controller: _scrollController),
+                          new TodoCard(gk: 1, controller: _scrollController),
+                          new TodoCard(gk: 2, controller: _scrollController),
+                          new TodoCard(gk: 3, controller: _scrollController),
+                          new TodoCard(gk: 4, controller: _scrollController),
+                          new TodoCard(gk: 5, controller: _scrollController),
+                          new TodoCard(gk: 6, controller: _scrollController),
+                          new TodoCard(gk: 7, controller: _scrollController),
+                        ],
+                      )),
+                ),
               ],
             ),
           )
@@ -98,3 +108,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+/*child: ListView.builder(
+                      itemBuilder:(BuildContext context,int index){
+                        return TodoCard(position:index);
+                      },
+                    controller: _scrollController,
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 29.0),
+                    itemCount: 20,
+                  ),*/
