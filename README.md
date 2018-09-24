@@ -1,4 +1,4 @@
-# Todo List Client with Flutter
+# Todo List Design with Flutter
 
 A Todo List Mobile Client Design
 
