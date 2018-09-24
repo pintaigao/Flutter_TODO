@@ -1,6 +1,9 @@
-# flutter_design
+# Todo List Client with Flutter
 
-A new Flutter application.
+A Todo List Mobile Client
+
+### Screenshot
+
 
 ## Getting Started
 
