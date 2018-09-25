@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design/Pages/AddTaskPage/AddTaskPage.dart';
 import 'package:flutter_design/Pages/HomePage.dart';
+import 'package:flutter_design/Pages/TodoDetail/TodoDetail.dart';
 
 void main() => runApp(new MyApp());
 
@@ -11,10 +13,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: "AvenirLTStd"
+        fontFamily: "AvenirLTStd",
+        accentColor: Colors.white,
+        accentColorBrightness: Brightness.light,
       ),
       routes: {
         "/": (BuildContext context) => HomePage(),
+        "/detail":(BuildContext context) => TodoDetail(),
+        "/edit":(BuildContext context) => AddTaskPage()
       },
       onGenerateRoute: (RouteSettings settings){
         final List<String> pathElements = settings.name.split("/");

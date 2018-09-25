@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 29.0),
-                  itemCount: 20,
+                  itemCount: 1,
                   controller: _scrollController,
                   physics: const NeverScrollableScrollPhysics(),
                 ),

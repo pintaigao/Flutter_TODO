@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design/Pages/TodoDetail.dart';
+import 'package:flutter_design/Pages/TodoDetail/TodoDetail.dart';
 
 class TodoCard extends StatelessWidget {
   final int position;
   final ScrollController controller;
   final colorChanger;
 
-  TodoCard({this.position, this.controller,this.colorChanger});
+  TodoCard({this.position, this.controller, this.colorChanger});
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +49,21 @@ class TodoCard extends StatelessWidget {
                             new Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                new Container(
-                                    child: new CircleAvatar(
-                                      child: Icon(Icons.person),
-                                      backgroundColor: Colors.white,
-                                      foregroundColor: Colors.grey,
-                                    ),
-                                    width: 45.0,
-                                    height: 45.0,
-                                    decoration: new BoxDecoration(
-                                      color: Colors.black, // border color
-                                      shape: BoxShape.circle,
-                                    )),
+                                new Hero(
+                                  tag: "type_icon",
+                                  child: new Container(
+                                      child: new CircleAvatar(
+                                        child: Icon(Icons.person),
+                                        backgroundColor: Colors.white,
+                                        foregroundColor: Colors.grey,
+                                      ),
+                                      width: 45.0,
+                                      height: 45.0,
+                                      decoration: new BoxDecoration(
+                                        color: Colors.black, // border color
+                                        shape: BoxShape.circle,
+                                      )),
+                                ),
                                 new Container(
 //                              alignment: Alignment(0.0, -3.0),
                                   child: new CircleAvatar(
@@ -81,20 +84,44 @@ class TodoCard extends StatelessWidget {
                               child: new Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  new Text("12 Tasks"),
-                                  new Text("Work"),
-                                  new Text("Slider Goes here"),
+                                  new Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 12.0),
+                                      child: new Align(
+                                          alignment: Alignment.bottomLeft,
+                                          child: new Hero(
+                                            tag: "task-number",
+                                            child: new Material(
+                                                color: Colors.transparent,
+                                                child: new Text(
+                                                  " Tasks",
+                                                  style: new TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight:
+                                                          FontWeight.w100),
+                                                )),
+                                          ))),
+                                  new Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 12.0),
+                                      child: new Align(
+                                          alignment: Alignment.bottomLeft,
+                                          child: new Hero(
+                                            tag: "task-title",
+                                            child: new Material(
+                                                color: Colors.transparent,
+                                                child: new Text(
+                                                  " Works",
+                                                  style: new TextStyle(
+                                                      fontSize: 30.0,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                )),
+                                          ))),
                                 ],
                               ),
                             ),
-                            /*
 
-                              onTap: () => Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                          builder: (BuildContext context) {
-                                    return TodoDetail();
-                                  }))),
-                        )*/
                           ],
                         )),
                   ),
@@ -104,9 +131,8 @@ class TodoCard extends StatelessWidget {
             new Container(
               height: screenSize.height / 2.1,
               child: new GestureDetector(
-                onTap: (){
-                  controller.animateTo(
-                      (screenSize.width - 90.5) * position,
+                onTap: () {
+                  controller.animateTo((screenSize.width - 90.5) * position,
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeOut);
                   colorChanger();
@@ -117,6 +143,7 @@ class TodoCard extends StatelessWidget {
                         MaterialPageRoute(builder: (BuildContext context) {
                       return TodoDetail();
                     }));
+//                    Navigator.of(context).pushNamed("/detail");
                   }
                 },
               ),
