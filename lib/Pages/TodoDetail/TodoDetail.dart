@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_design/Pages/AddTaskPage/AddTaskPage.dart';
 import 'package:flutter_design/Pages/TodoDetail/TodoList.dart';
 
 class TodoDetail extends StatefulWidget {
@@ -12,11 +13,22 @@ class _TodoDetailState extends State<TodoDetail> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      floatingActionButton: new FloatingActionButton(
-        onPressed: () => print("press"),
-        child: Icon(Icons.add,color: Colors.white,size: 30.0,),
-        backgroundColor: Color.fromRGBO(99, 138, 223, 1.0),
+      floatingActionButton: new Hero(
+        tag: "add-action",
+        child: new FloatingActionButton(
+          onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return AddTaskPage();
+              })),
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 30.0,
+          ),
+          backgroundColor: Color.fromRGBO(99, 138, 223, 1.0),
+        ),
       ),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       backgroundColor: Colors.white,
       appBar: new AppBar(
