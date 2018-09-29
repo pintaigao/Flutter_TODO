@@ -13,6 +13,8 @@ class _TodoDetailState extends State<TodoDetail> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      backgroundColor: Colors.white,
       floatingActionButton: new Hero(
         tag: "add-action",
         child: new FloatingActionButton(
@@ -28,27 +30,14 @@ class _TodoDetailState extends State<TodoDetail> {
           backgroundColor: Color.fromRGBO(99, 138, 223, 1.0),
         ),
       ),
-
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      backgroundColor: Colors.white,
-      appBar: new AppBar(
-        title: new Text('My App Title'),
-        backgroundColor: Colors.transparent,
-        leading: new Icon(Icons.arrow_back, color: Colors.grey),
-        elevation: 0.0,
-      ),
       body: new Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 45.0,
-        ),
-        margin: EdgeInsets.only(top: 90.0),
         child: new ListView(
+          padding: EdgeInsets.only(top: 150.0, left: 50.0, right: 50.0),
           shrinkWrap: true,
           children: <Widget>[
             new Container(
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(bottom: 30.0),
-              padding: EdgeInsets.all(0.0),
               child: new Hero(
                 tag: "type_icon",
                 child: new Container(
@@ -83,7 +72,7 @@ class _TodoDetailState extends State<TodoDetail> {
             new Padding(
                 padding: const EdgeInsets.only(bottom: 12.0),
                 child: new Align(
-                    alignment: Alignment.bottomLeft,
+                    alignment: Alignment.centerLeft,
                     child: new Hero(
                       tag: "task-title",
                       child: new Material(
@@ -94,8 +83,7 @@ class _TodoDetailState extends State<TodoDetail> {
                                 fontSize: 30.0, fontWeight: FontWeight.w700),
                           )),
                     ))),
-            new TodoList("today"),
-            new TodoList("today"),
+            TodoList("today"),
           ],
         ),
       ),

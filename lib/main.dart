@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "AvenirLTStd",
-        accentColor: Colors.white,
+        accentColor: Colors.grey,
         accentColorBrightness: Brightness.light,
       ),
       routes: {
